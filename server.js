@@ -1,5 +1,6 @@
 const express = require('express');
-const bcrypt = require('bcrypt-nodejs')
+const bcrypt = require('bcrypt-nodejs');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const knex = require('knex');
 
@@ -18,7 +19,7 @@ const db = knex({
 
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => { res.send(db.users) })
